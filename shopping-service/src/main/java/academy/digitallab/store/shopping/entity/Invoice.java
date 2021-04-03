@@ -1,5 +1,6 @@
 package academy.digitallab.store.shopping.entity;
 
+import academy.digitallab.store.shopping.model.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -28,11 +29,12 @@ public class Invoice {
     @Column(name = "customer_id")
     private Long customerId;
 
+    @Transient
+    private Customer customer;
+
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
-
-
 
     @Valid
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
